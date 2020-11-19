@@ -1,5 +1,6 @@
 if __name__ == '__main__':
     n = int(input())
+    c=2
     arr = list(map(int, input().split()))
     if arr[0]>arr[1]:
         largest=arr[0]
@@ -8,15 +9,21 @@ if __name__ == '__main__':
         largest=arr[1]
         r=arr[0]
     else:
-        if arr[0]!=arr[2]:
-            if arr[0]>arr[2]:
-                largest=arr[0]
-                r=arr[2]
-            else:
-                largest=arr[2]
-                r=arr[1]
-    for i in range(1,n):
+        for i in range(2,n):
+            if arr[0]!=arr[i]:
+                if arr[0]>arr[i]:
+                    largest=arr[0]
+                    r=arr[i]
+                    c=i
+                    break
+                else:
+                    largest=arr[i]
+                    r=arr[0]
+                    c=i
+                    break
+    for i in range(c,n):
         if arr[i]>largest:
+            r=largest
             largest=arr[i]
         elif arr[i]>r and arr[i]!=largest:
             r=arr[i]
